@@ -131,9 +131,8 @@ st.write(
     "Aplikasi ini menebak segmen seorang pelanggan dari data dirinya."
 )
 st.caption(
-    f"Model: Random Forest • Akurasi pada data uji: **{acc:.0%}** • "
-    "artinya dari 100 pelanggan, sekitar "
-    f"{acc*100:.0f} tertebak segmennya dengan benar."
+    f"Model: Random Forest • Akurasi **{acc:.0%}** — diukur dari data latih berlabel "
+    "(patokan kualitas model, bukan akurasi data yang kamu upload)."
 )
 
 
@@ -196,6 +195,11 @@ st.subheader("📦 Prediksi Banyak Pelanggan Sekaligus")
 st.write(
     "Punya daftar pelanggan sendiri? Upload file CSV-nya untuk memprediksi semuanya "
     "sekaligus — atau coba dulu dengan data contoh."
+)
+st.info(
+    f"ℹ️ **Soal akurasi:** angka {acc:.0%} di atas diukur dari data latih yang punya jawaban benar. "
+    "Untuk pelanggan baru tanpa label, hasil di bawah adalah **tebakan terbaik** model — "
+    "diperkirakan mirip selama karakter pelanggannya tidak jauh beda dari data latih."
 )
 
 mode = st.radio(
