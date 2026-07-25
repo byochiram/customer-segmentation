@@ -147,7 +147,7 @@ user = {
     "Graduated": st.sidebar.selectbox(LABELS["Graduated"], options["Graduated"]),
     "Profession": st.sidebar.selectbox(LABELS["Profession"], options["Profession"]),
     "Work_Experience": st.sidebar.slider(LABELS["Work_Experience"], 0, 14, 1),
-    "Spending_Score": st.sidebar.selectbox(LABELS["Spending_Score"], options["Spending_Score"]),
+    "Spending_Score": st.sidebar.radio(LABELS["Spending_Score"], options["Spending_Score"], horizontal=True),
     "Family_Size": st.sidebar.slider(LABELS["Family_Size"], 1, 9, 3),
 }
 
