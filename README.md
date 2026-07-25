@@ -2,7 +2,7 @@
 
 Aplikasi web interaktif yang memprediksi **segmen pelanggan (A / B / C / D)** dari data demografi & perilaku menggunakan **Random Forest**. Dibangun dari kasus nyata: sebuah perusahaan otomotif ingin masuk ke pasar baru dan menerapkan strategi pemasaran tersegmentasi ke ~2.600 calon pelanggan baru.
 
-> 🔗 **Live demo:** _(isi setelah deploy)_ https://xxxxx.streamlit.app
+> 🔗 **Live demo:** https://predict-customer-segment.streamlit.app
 
 <!-- Tips: tambahkan screenshot aplikasi di sini setelah deploy -->
 <!-- ![Screenshot](screenshot.png) -->
@@ -11,7 +11,7 @@ Aplikasi web interaktif yang memprediksi **segmen pelanggan (A / B / C / D)** da
 
 ## ✨ Fitur
 - **Prediksi 1 pelanggan** — isi data lewat sidebar, dapat segmen + probabilitas tiap kelas.
-- **Prediksi massal** — sekali klik memprediksi seluruh pelanggan baru (`test.csv`) + tombol download hasil CSV.
+- **Prediksi massal** — prediksi banyak pelanggan sekaligus: pakai data contoh **atau upload CSV sendiri**, lalu download hasilnya.
 - **Profil segmen** — rata-rata umur, pengalaman kerja, & ukuran keluarga per segmen.
 - **Akurasi model** ditampilkan langsung (dievaluasi pada data uji holdout).
 
@@ -28,12 +28,11 @@ Aplikasi web interaktif yang memprediksi **segmen pelanggan (A / B / C / D)** da
 | `Work_Experience` | Pengalaman kerja (tahun) |
 | `Spending_Score` | Skor belanja (Low / Average / High) |
 | `Family_Size` | Jumlah anggota keluarga |
-| `Var_1` | Kategori anonim (Cat_1–Cat_7) |
 
-Target: **`Segmentation`** (A, B, C, D).
+Target: **`Segmentation`** (A, B, C, D). Kolom `Var_1` (kategori anonim) ada di data tapi **tidak dipakai model** — terbukti tidak menambah akurasi.
 
 ## 🧠 Metode
-1. **Preprocessing** — buang `ID`, isi missing value (median untuk numerik, modus untuk kategorikal).
+1. **Preprocessing** — buang `ID` & `Var_1` (anonim), isi missing value (median untuk numerik, modus untuk kategorikal).
 2. **Encoding** — fitur kategorikal → numerik; `Spending_Score` diberi urutan ordinal (Low < Average < High).
 3. **Model** — `RandomForestClassifier` dengan hyperparameter hasil `GridSearchCV`.
 4. **Evaluasi** — akurasi diukur pada data uji holdout (train/test split berstrata).
